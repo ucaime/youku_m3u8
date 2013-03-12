@@ -2,15 +2,14 @@
 /**
  * 这个类是用来通过优酷视频id解析其真实m3u8地址，该地址可用于html5中的video标签进行播放
  * m3u8格式应该只能在mac、ios等平台下正常播放
- * 
  * @author 苏牧羊 <i@ucai.me>
- * 
  */
 
-class youku{
-	public $VideoIds;
-	public $StreamType;
-	public $VideoUrl;
+class youku
+{
+    public $VideoIds;
+    public $StreamType;
+    public $VideoUrl;
     public $VideoParam = array();
     public $error;
 
@@ -61,13 +60,13 @@ class youku{
      * @param $StreamType
      * @return string
      */
-    public function getVideoUrl($VideoIds, $StreamType='flv')
+    public function getVideoUrl($VideoIds, $StreamType = 'flv')
     {
         $this->VideoIds = $VideoIds;
-        $this->StreamType =$StreamType;
-        if(empty($this->VideoParam))
+        $this->StreamType = $StreamType;
+        if (empty($this->VideoParam))
             $this->parseVideoParam();
-        if(!in_array($this->StreamType,$this->VideoParam['typelist']))
+        if (!in_array($this->StreamType, $this->VideoParam['typelist']))
             $this->StreamType = 'flv';
         $this->VideoUrl = 'http://v.youku.com/player/getM3U8/vid/' . $this->VideoParam['vid'] . '/type/' . $this->StreamType . '/sid/' . $this->VideoParam['sid'] . '/K/' . $this->VideoParam['key'] . '/video.m3u8';
         return $this->VideoUrl;
@@ -89,22 +88,24 @@ class youku{
     /**
      * 清空当前类中的数据
      */
-    public function clear(){
+    public function clear()
+    {
         $this->VideoIds = '';
         $this->StreamType = '';
-        $this->VideoUrl='';
-        $this->VideoParam=array();
+        $this->VideoUrl = '';
+        $this->VideoParam = array();
     }
+
     /**
      * 分析视频参数
      */
     private function parseVideoParam()
     {
-            $js = json_decode($this->getJs(), true);
-            $this->VideoParam['vid'] = $js['data'][0]['videoid'];
-            $this->VideoParam['typelist'] = $js['data'][0]['streamtypes'];
-            $this->VideoParam['key']= self::getKey($js['data'][0]['key1'], $js['data'][0]['key2']);
-            $this->VideoParam['sid']=self::sid();
+        $js = json_decode($this->getJs(), true);
+        $this->VideoParam['vid'] = $js['data'][0]['videoid'];
+        $this->VideoParam['typelist'] = $js['data'][0]['streamtypes'];
+        $this->VideoParam['key'] = self::getKey($js['data'][0]['key1'], $js['data'][0]['key2']);
+        $this->VideoParam['sid'] = self::sid();
     }
 
     /**
