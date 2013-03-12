@@ -1,0 +1,1 @@
+{"name":"Youku m3u8","tagline":"根据优酷视频ID获取m3u8格式地址，支持清晰度查询，返回不同清晰度视频","body":"根据优酷视频id获取视频m3u8地址\r\n==========\r\n\r\n能够通过视频id来获取m3u8的地址，该地址可以使用video标签在ios设备中嵌入播放。\r\n\r\n - 支持清晰度获取\r\n - 支持根据清晰度来获取不同清晰度的视频\r\n","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
