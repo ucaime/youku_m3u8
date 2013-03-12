@@ -8,9 +8,9 @@
 
 class youku
 {
-    static protected $_cache = array();
+    protected static $_cache = array();
 
-    static protected $_error;
+    protected static $_error;
 
     /**
      * 获取视频地址,默认获取最不清晰的视频
