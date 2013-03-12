@@ -56,12 +56,12 @@ class youku{
     }
 
     /**
-     * 获取视频地址
+     * 获取视频地址,默认获取最不清晰的视频
      * @param $VideoIds
      * @param $StreamType
      * @return string
      */
-    public function getVideoUrl($VideoIds, $StreamType)
+    public function getVideoUrl($VideoIds, $StreamType='flv')
     {
         $this->VideoIds = $VideoIds;
         $this->StreamType =$StreamType;
@@ -78,7 +78,7 @@ class youku{
      * @param $VideoIds
      * @return mixed
      */
-    public function getStreamType($VideoIds)
+    public function getStreamTypes($VideoIds)
     {
         $this->VideoIds = $VideoIds;
         if (empty($this->VideoParam))
